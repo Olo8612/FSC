@@ -27,4 +27,41 @@ public class MagazineToProduction {
 	@NotNull
 	@Column(name = "fsc")
 	private Integer fscCategory;
+
+	public MagazineToProduction() {
+
+	}
+
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
+	}
+
+	public Long getQuantityCm3() {
+		return quantityCm3;
+	}
+
+	public void setQuantityCm3(Long quantityCm3) {
+		this.quantityCm3 = quantityCm3;
+	}
+
+	public Long getQuantityGrams() {
+		return quantityGrams;
+	}
+
+	public void setQuantityGrams(Long quantityGrams) {
+		this.quantityGrams = quantityGrams;
+	}
+
+	public Integer getFscCategory() {
+		return fscCategory;
+	}
+
+	public void setFscCategory(Integer fscCategory) {
+		this.fscCategory = fscCategory;
+	}
+
 }
