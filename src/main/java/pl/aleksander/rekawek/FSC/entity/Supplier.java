@@ -1,0 +1,92 @@
+package pl.aleksander.rekawek.FSC.entity;
+
+import java.util.Date;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
+import javax.validation.constraints.NotNull;
+
+import org.hibernate.validator.constraints.NotBlank;
+
+@Entity
+@Table(name = "supplier")
+public class Supplier {
+
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Long id;
+
+	@NotBlank
+	private String name;
+
+	@NotBlank
+	private String address;
+
+	@NotNull
+	private Integer fscCategory;
+
+	@NotBlank
+	@Column(name = "certCode")
+	private String fscCertificationCode;
+
+	@NotNull
+	@Column(name = "verifyDate")
+	private Date lastVerificationDate;
+
+	public Supplier() {
+
+	}
+
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public String getAddress() {
+		return address;
+	}
+
+	public void setAddress(String address) {
+		this.address = address;
+	}
+
+	public Integer getFscCategory() {
+		return fscCategory;
+	}
+
+	public void setFscCategory(Integer fscCategory) {
+		this.fscCategory = fscCategory;
+	}
+
+	public String getFscCertificationCode() {
+		return fscCertificationCode;
+	}
+
+	public void setFscCertificationCode(String fscCertificationCode) {
+		this.fscCertificationCode = fscCertificationCode;
+	}
+
+	public Date getLastVerificationDate() {
+		return lastVerificationDate;
+	}
+
+	public void setLastVerificationDate(Date lastVerificationDate) {
+		this.lastVerificationDate = lastVerificationDate;
+	}
+
+}

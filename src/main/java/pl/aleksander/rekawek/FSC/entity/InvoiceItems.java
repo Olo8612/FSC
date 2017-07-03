@@ -11,6 +11,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 
+import org.hibernate.validator.constraints.NotBlank;
 import org.hibernate.validator.constraints.NotEmpty;
 
 @Entity
@@ -21,18 +22,22 @@ public class InvoiceItems {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	
-	@NotEmpty
+	@NotBlank
+	private String description;
+	
+	@NotBlank
 	private String woodType;
 	
 	@NotNull
-	@Column(name="quantMeters")
+	@Column(name="quantCapacity")
 	private Long quantityCm3;
 	
 	@NotNull
-	@Column(name="quantGrams")
+	@Column(name="quantWeight")
 	private Long quantityGrams;
 	
 	@NotNull
+	@Column(name="fsc")
 	private Integer fscCategory;
 	
 	@ManyToOne

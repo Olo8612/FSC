@@ -11,9 +11,12 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
+
+import org.hibernate.validator.constraints.NotBlank;
 
 @Entity
 @Table(name = "invoice")
@@ -22,6 +25,9 @@ public class Invoice {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
+	
+	@NotBlank
+	private String invoiceNumber;
 
 	@NotNull
 	@Column(name = "issue")
@@ -33,12 +39,24 @@ public class Invoice {
 
 	@OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
 	private List<InvoiceItems> items;
-	
-	@Column(name="value")
+
+	@Column(name = "value")
 	private BigDecimal valueOfAllNet;
 
+	@NotNull
+	@ManyToOne
+	private Supplier supplier;
+
 	public Invoice() {
-		
+
+	}
+
+	public Supplier getSupplier() {
+		return supplier;
+	}
+
+	public void setSupplier(Supplier supplier) {
+		this.supplier = supplier;
 	}
 
 	public Long getId() {
@@ -80,6 +98,5 @@ public class Invoice {
 	public void setValueOfAllNet(BigDecimal valueOfAllNet) {
 		this.valueOfAllNet = valueOfAllNet;
 	}
-	
-	
+
 }
