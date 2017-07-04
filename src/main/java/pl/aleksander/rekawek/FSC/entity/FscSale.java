@@ -1,5 +1,7 @@
 package pl.aleksander.rekawek.FSC.entity;
 
+import java.util.List;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -16,7 +18,7 @@ public class FscSale {
 	private Long id;
 	
 	@OneToMany
-	private SaleInvoice invoice;
+	private List<SaleInvoice> invoice;
 
 	public FscSale() {
 		
@@ -30,11 +32,11 @@ public class FscSale {
 		this.id = id;
 	}
 
-	public SaleInvoice getInvoice() {
+	public List<SaleInvoice> getInvoice() {
 		return invoice;
 	}
 
-	public void setInvoice(SaleInvoice invoice) {
+	public void setInvoice(List<SaleInvoice> invoice) {
 		this.invoice = invoice;
 	}
 	

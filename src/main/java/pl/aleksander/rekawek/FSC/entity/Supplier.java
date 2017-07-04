@@ -8,9 +8,12 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.validation.constraints.Max;
+import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
 
 import org.hibernate.validator.constraints.NotBlank;
+import org.springframework.format.annotation.DateTimeFormat;
 
 @Entity
 @Table(name = "supplier")
@@ -27,6 +30,8 @@ public class Supplier {
 	private String address;
 
 	@NotNull
+	@Min(25)
+	@Max(100)
 	private Integer fscCategory;
 
 	@NotBlank
@@ -34,6 +39,7 @@ public class Supplier {
 	private String fscCertificationCode;
 
 	@NotNull
+	@DateTimeFormat(pattern = "dd/MM/yyyy")
 	@Column(name = "verifyDate")
 	private Date lastVerificationDate;
 

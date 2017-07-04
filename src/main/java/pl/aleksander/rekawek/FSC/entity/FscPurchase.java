@@ -7,6 +7,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 
@@ -24,8 +25,8 @@ public class FscPurchase {
 	/*
 	 * Mapped with invoiceNumber Comment TO-DELETE
 	 */
-	@ManyToMany
-	private InvoiceItem invoiceItem;
+	@OneToOne
+	private Invoice invoiceItems;
 
 	public FscPurchase() {
 
@@ -47,12 +48,12 @@ public class FscPurchase {
 		this.month = month;
 	}
 
-	public InvoiceItem getInvoiceItem() {
-		return invoiceItem;
+	public Invoice getInvoiceItem() {
+		return invoiceItems;
 	}
 
-	public void setInvoiceItem(InvoiceItem invoiceItem) {
-		this.invoiceItem = invoiceItem;
+	public void setInvoiceItem(Invoice invoiceItems) {
+		this.invoiceItems = invoiceItems;
 	}
 
 }
