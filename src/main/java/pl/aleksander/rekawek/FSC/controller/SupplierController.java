@@ -33,11 +33,11 @@ public class SupplierController {
 			return "forms/createSuplierForm";
 		} else {
 			supplierRepository.save(supplier);
-			return "redirect: supplier/list";
+			return "redirect: ./";
 		}
 	}
 
-	@RequestMapping(path = "/list", method = RequestMethod.GET)
+	@RequestMapping(path = "/", method = RequestMethod.GET)
 	public String getSuppliersList(Model model) {
 		model.addAttribute("suppliers", supplierRepository.findAll());
 		return "views/suppliersList";
@@ -46,18 +46,31 @@ public class SupplierController {
 	@RequestMapping(path = "/edit/{id}", method = RequestMethod.GET)
 	public String getUpdateSupplierForm(@PathVariable Long id, Model model) {
 		model.addAttribute("supplier", supplierRepository.findOne(id));
-		return "forms/createSupplierForm";
+		return "forms/createSuplierForm";
 	}
 
 	@RequestMapping(path = "/edit/{id}", method = RequestMethod.POST)
-	public String processUpdateSupplierForm(@ModelAttribute Supplier supplier, Model model) {
-		return "redirect: supplier/list";
+	public String processUpdateSupplierForm(@Validated @ModelAttribute Supplier supplier, BindingResult result,
+			Model model) {
+		if (result.hasErrors()) {
+			return "forms/createSupplierForm";
+		} else {
+			supplierRepository.save(supplier);
+			return "redirect: ../";
+		}
+
 	}
 
 	@RequestMapping(path = "/delete/{id}", method = RequestMethod.GET)
 	public String deleteSupplierRequest(@PathVariable Long id, Model model) {
 		model.addAttribute("confirmation", supplierRepository.findOne(id));
 		return "views/confirmationDialog";
+	}
+
+	@RequestMapping(path = "/delete/{id}/yes", method = RequestMethod.GET)
+	public String processDeleteSupplier(@PathVariable Long id) {
+		supplierRepository.delete(id);
+		return "redirect: /FSC/supplier/";
 	}
 
 }

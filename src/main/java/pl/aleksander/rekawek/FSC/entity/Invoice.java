@@ -17,6 +17,7 @@ import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 
 import org.hibernate.validator.constraints.NotBlank;
+import org.springframework.format.annotation.DateTimeFormat;
 
 @Entity
 @Table(name = "invoice")
@@ -30,10 +31,12 @@ public class Invoice {
 	private String invoiceNumber;
 
 	@NotNull
+	@DateTimeFormat(pattern = "dd/MM/yyyy")
 	@Column(name = "issue")
 	private Date dateOfIssue;
 
 	@NotNull
+	@DateTimeFormat(pattern = "dd/MM/yyyy")
 	@Column(name = "payment")
 	private Date dateOfPayment;
 
@@ -49,6 +52,14 @@ public class Invoice {
 
 	public Invoice() {
 
+	}
+
+	public String getInvoiceNumber() {
+		return invoiceNumber;
+	}
+
+	public void setInvoiceNumber(String invoiceNumber) {
+		this.invoiceNumber = invoiceNumber;
 	}
 
 	public Supplier getSupplier() {

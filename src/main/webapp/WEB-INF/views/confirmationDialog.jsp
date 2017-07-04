@@ -9,15 +9,8 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<form:form method="post" modelAttribute="supplier">
-	<form:errors path="*"/><br>
-	Nazwa: <form:input path="name"/><br>
-	Adres: <form:input path="address"/><br>
-	Kategoria FSC: <form:input path="fscCategory"/><br>
-	Numer certyfikatu FSC<form:input path="fscCertificationCode"/><br>
-	Data ostatniej weryfikacji<form:input path="lastVerificationDate"/><br>
-	<input type="submit"/>
-	</form:form>
-	<a href="../">Powrót do listy</a>
+	<h1>Czy na pewno chcesz usunąć?</h1>
+	<p>${confirmation}</p>
+	<a href="../delete/${confirmation.id}/yes">Tak</a><a href="../">Nie</a>
 </body>
 </html>
