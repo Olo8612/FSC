@@ -16,7 +16,7 @@ import org.hibernate.validator.constraints.NotEmpty;
 
 @Entity
 @Table(name="invoiceItems")
-public class InvoiceItems {
+public class InvoiceItem {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -46,7 +46,7 @@ public class InvoiceItems {
 	@NotNull
 	private BigDecimal priceNet;
 
-	public InvoiceItems() {
+	public InvoiceItem() {
 		
 	}
 

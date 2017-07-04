@@ -38,7 +38,7 @@ public class Invoice {
 	private Date dateOfPayment;
 
 	@OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-	private List<InvoiceItems> items;
+	private List<InvoiceItem> items;
 
 	@Column(name = "value")
 	private BigDecimal valueOfAllNet;
@@ -83,11 +83,11 @@ public class Invoice {
 		this.dateOfPayment = dateOfPayment;
 	}
 
-	public List<InvoiceItems> getItems() {
+	public List<InvoiceItem> getItems() {
 		return items;
 	}
 
-	public void setItems(List<InvoiceItems> items) {
+	public void setItems(List<InvoiceItem> items) {
 		this.items = items;
 	}
 
