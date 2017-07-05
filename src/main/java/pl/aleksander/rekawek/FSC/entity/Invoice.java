@@ -47,7 +47,7 @@ public class Invoice {
 	private BigDecimal valueOfAllNet;
 
 	@NotNull
-	@ManyToOne
+	@ManyToOne(fetch=FetchType.EAGER)
 	private Supplier supplier;
 
 	public Invoice() {

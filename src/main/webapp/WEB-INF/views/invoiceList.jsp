@@ -13,33 +13,34 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<h1>Menu Dostawców</h1>
+	<h1>Menu Faktur</h1>
 	<nav> 
-		<a href="add">Dodaj dostawcę</a> 
-		<a href="../invoice/">Faktury</a> 
-		<a href="../magazine/">Magazyn</a> 
-		<a href="../production/">Produkcja</a> 
+		<a href="add">Dodaj Fakturę</a> 
+		<a href="../supplier/">Dostawcy</a>
+		<a href="../customer/">Odbiorcy</a>
+		<a href="">Magazyn</a> 
+		<a href="">Produkcja</a> 
 	</nav>
 	<table>
 		<thead>
 			<tr>
-				<td>Nazwa</td>
-				<td>Adres</td>
-				<td>Kategoria FSC</td>
-				<td>Kod Certyfikatu FSC</td>
-				<td>Data Ostatniej Weryfikacji</td>
+				<td>Numer</td>
+				<td>Dostawca</td>
+				<td>Data wystawienia</td>
+				<td>Płatność do</td>
+				
 			</tr>
 		</thead>
 		<tbody>
-			<c:forEach items="${suppliers }" var="supplier">
+			<c:forEach items="${invoices }" var="invoice">
 				<tr>
-					<td>${supplier.name }</td>
-					<td>${supplier.address }</td>
-					<td>${supplier.fscCategory }</td>
-					<td>${supplier.fscCertificationCode }</td>
-					<td>${supplier.lastVerificationDate }</td>
-					<td><a href="edit/${supplier.id}">Edytuj</a></td>
-					<td><a href="delete/${supplier.id }">Usuń</a></td>
+					<td>${invoice.invoiceNumber }</td>
+					<td>${invoice.supplier.name }</td>
+					<td>${invoice.dateOfIssue }</td>
+					<td>${invoice.dateOfPayment }</td>
+				
+					<td><a href="edit/${invoice.id}">Edytuj</a></td>
+					<td><a href="delete/${invoice.id }">Usuń</a></td>
 				</tr>
 			</c:forEach>
 		</tbody>

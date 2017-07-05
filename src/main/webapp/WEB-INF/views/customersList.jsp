@@ -13,9 +13,10 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<h1>Menu Dostawców</h1>
+	<h1>Menu Odbiorców</h1>
 	<nav> 
-		<a href="add">Dodaj dostawcę</a> 
+		<a href="add">Dodaj odbiorcę</a>
+		<a href="../supplier/">Dostawcy</a> 
 		<a href="../invoice/">Faktury</a> 
 		<a href="../magazine/">Magazyn</a> 
 		<a href="../production/">Produkcja</a> 
@@ -25,21 +26,19 @@
 			<tr>
 				<td>Nazwa</td>
 				<td>Adres</td>
-				<td>Kategoria FSC</td>
-				<td>Kod Certyfikatu FSC</td>
-				<td>Data Ostatniej Weryfikacji</td>
+				<td>Numer Nip</td>
+				<td>Dodatkowe informacje</td>
 			</tr>
 		</thead>
 		<tbody>
-			<c:forEach items="${suppliers }" var="supplier">
+			<c:forEach items="${customers }" var="customer">
 				<tr>
-					<td>${supplier.name }</td>
-					<td>${supplier.address }</td>
-					<td>${supplier.fscCategory }</td>
-					<td>${supplier.fscCertificationCode }</td>
-					<td>${supplier.lastVerificationDate }</td>
-					<td><a href="edit/${supplier.id}">Edytuj</a></td>
-					<td><a href="delete/${supplier.id }">Usuń</a></td>
+					<td>${customer.name }</td>
+					<td>${customer.address }</td>
+					<td>${customer.taxIdentificationNumber }</td>
+					<td>${customer.additionalInformation }</td>
+					<td><a href="edit/${customer.id}">Edytuj</a></td>
+					<td><a href="delete/${customer.id }">Usuń</a></td>
 				</tr>
 			</c:forEach>
 		</tbody>
