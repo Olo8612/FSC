@@ -40,8 +40,8 @@ public class Invoice {
 	@Column(name = "payment")
 	private Date dateOfPayment;
 
-	@OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-	private List<InvoiceItem> items;
+//	@OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+//	private List<InvoiceItem> items;
 
 	@Column(name = "value")
 	private BigDecimal valueOfAllNet;
@@ -94,13 +94,13 @@ public class Invoice {
 		this.dateOfPayment = dateOfPayment;
 	}
 
-	public List<InvoiceItem> getItems() {
-		return items;
-	}
-
-	public void setItems(List<InvoiceItem> items) {
-		this.items = items;
-	}
+//	public List<InvoiceItem> getItems() {
+//		return items;
+//	}
+//
+//	public void setItems(List<InvoiceItem> items) {
+//		this.items = items;
+//	}
 
 	public BigDecimal getValueOfAllNet() {
 		return valueOfAllNet;

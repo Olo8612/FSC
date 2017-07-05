@@ -2,6 +2,8 @@ package pl.aleksander.rekawek.FSC.controller;
 
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -34,9 +36,10 @@ public class InvoiceController {
 	public List<Supplier> getSuppliers() {
 		return supplierRepository.findAll();
 	}
-	
+
 	@RequestMapping(path = "/", method = RequestMethod.GET)
-	public String getInvoceList(Model model) {
+	public String getInvoceList(Model model, HttpSession session) {
+		session.removeAttribute("invoice");
 		model.addAttribute("invoices", invoiceRepository.findAll());
 		return "views/invoiceList";
 	}
@@ -50,36 +53,41 @@ public class InvoiceController {
 
 	@RequestMapping(path = "/add", method = RequestMethod.POST)
 	public String processCreateInvoiceForm(@Validated @ModelAttribute Invoice invoice, BindingResult result,
-			Model model) {
+			Model model, HttpSession session) {
 		if (result.hasErrors()) {
 			return "forms/createInvoiceForm";
 		} else {
 			invoiceRepository.save(invoice);
-			model.addAttribute("invoice", invoiceRepository.findOne(invoice.getId()));
-//			model.addAttribute("invoiceItem", new InvoiceItem());
+			session.setAttribute("invoice", invoiceRepository.findOne(invoice.getId()));
+			model.addAttribute("invoiceItem", new InvoiceItem());
 			return "redirect: /FSC/invoice/add/Item";
 		}
 
 	}
 
 	@RequestMapping(path = "/add/Item", method = RequestMethod.GET)
-	public String addInvoiceItem(@ModelAttribute Invoice invoice, Model model) {
+	public String addInvoiceItem(Model model, HttpSession session) {
+		Invoice invoice = (Invoice) session.getAttribute("invoice");
 		model.addAttribute("invoice", invoice);
+
 		model.addAttribute("invoiceItem", new InvoiceItem());
-		
+
 		return "forms/addInvoiceItems";
 	}
-	
+
 	@RequestMapping(path = "/add/Item", method = RequestMethod.POST)
-	public String processAddInvoiceItem(@Validated @ModelAttribute InvoiceItem invoiceItem, BindingResult result){
-		if(result.hasErrors()){
+	public String processAddInvoiceItem(@Validated @ModelAttribute InvoiceItem invoiceItem, BindingResult result,
+			Model model, HttpSession session) {
+		if (result.hasErrors()) {
 			return "forms/addInvoiceItems";
 		} else {
 			invoiceItemsRepository.save(invoiceItem);
-			return "./";
+			Invoice invoice = (Invoice) session.getAttribute("invoice");
+			model.addAttribute("existingItems", invoiceItemsRepository.findAllInvoiceItemsByInvoiceId(invoice.getId()));
+			return "forms/addInvoiceItems";
 		}
 	}
-	
+
 	@RequestMapping(path = "/edit/{id}", method = RequestMethod.GET)
 	public String getUpdateInvoiceForm(@PathVariable Long id, Model model) {
 		model.addAttribute("invoice", invoiceRepository.findOne(id));
@@ -97,7 +105,7 @@ public class InvoiceController {
 		}
 
 	}
-	
+
 	@RequestMapping(path = "/delete/{id}", method = RequestMethod.GET)
 	public String deleteInvoiceRequest(@PathVariable Long id, Model model) {
 		model.addAttribute("confirmation", invoiceRepository.findOne(id));
@@ -108,5 +116,12 @@ public class InvoiceController {
 	public String processDeleteInvoice(@PathVariable Long id) {
 		invoiceRepository.delete(id);
 		return "redirect: /FSC/invoice/";
+	}
+
+	// Method to delete
+	@RequestMapping(path = "/test", method = RequestMethod.GET)
+	public String testQueryMethod(Model model) {
+		model.addAttribute("test", invoiceItemsRepository.findAllInvoiceItemsByInvoiceId(1L));
+		return "views/test";
 	}
 }

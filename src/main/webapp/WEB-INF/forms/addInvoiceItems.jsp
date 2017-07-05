@@ -14,18 +14,46 @@
 	<p>${invoice.invoiceNumber }</p>
 	<p>${invoice.dateOfIssue}</p>
 	<p>${invoice.supplier.name }</p>
-	<form:form method="post" modelAttribute="invoiceItem">
-		<form:errors path="*" />
-			Opis: <form:input path="description" />
-			Typ drewna: <form:input path="woodType" />
-			Objętość m3: <form:input path="quantityCm3" />
-			Waga: <form:input path="quantityGrams" />
-			Kategoria Fsc: <form:input path="fscCategory" />
-			
-			Wartość: <form:input path="priceNet" />
-
-		<input type="submit">
-	</form:form>
+	<table>
+		<thead>
+			<tr>
+				<td>Opis</td>
+				<td>Typ Drewna</td>
+				<td>Objętość cm3</td>
+				<td>Waga gram</td>
+				<td>Kategoria FSC</td>
+				<td>Wartość Netto</td>
+			</tr>
+		</thead>
+		<tbody>
+			<c:forEach items="${existingItems }" var="items">
+			<tr>
+				<td>${items.description}</td>
+				<td>${items.woodType}</td>
+				<td>${items.quantityCm3}</td>
+				<td>${items.quantityGrams}</td>
+				<td>${items.fscCategory}</td>
+				<td>${items.priceNet}</td>
+			</tr>
+			</c:forEach>
+			<form:form method="post" modelAttribute="invoiceItem">
+				<tr>
+					<form:errors path="*" />
+					
+					<td><form:input path="description" /></td>
+					<td><form:input path="woodType" /></td>
+					<td><form:input path="quantityCm3" /></td>
+					<td><form:input path="quantityGrams" /></td>
+					<td><form:input path="fscCategory" /></td>
+					<td><form:input path="priceNet" /></td>
+					<form:hidden path="invoice.id" value="${invoice.id }" />
+					<input type="submit" value="Dodaj pozycję">
+				</tr>
+				
+			</form:form>
+		</tbody>
+	</table>
+	<a href="../">Zakończ dodawanie pozycji</a>
 
 </body>
 </html>
