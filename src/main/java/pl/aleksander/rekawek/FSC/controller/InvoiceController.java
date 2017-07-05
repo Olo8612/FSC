@@ -56,8 +56,8 @@ public class InvoiceController {
 		} else {
 			invoiceRepository.save(invoice);
 			model.addAttribute("invoice", invoiceRepository.findOne(invoice.getId()));
-			model.addAttribute("invoiceItem", new InvoiceItem());
-			return "forms/addInvoiceItems";
+//			model.addAttribute("invoiceItem", new InvoiceItem());
+			return "redirect: /FSC/invoice/add/Item";
 		}
 
 	}
@@ -65,7 +65,8 @@ public class InvoiceController {
 	@RequestMapping(path = "/add/Item", method = RequestMethod.GET)
 	public String addInvoiceItem(@ModelAttribute Invoice invoice, Model model) {
 		model.addAttribute("invoice", invoice);
-		model.addAttribute("invoiceItems", new InvoiceItem());
+		model.addAttribute("invoiceItem", new InvoiceItem());
+		
 		return "forms/addInvoiceItems";
 	}
 	
