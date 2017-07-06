@@ -6,11 +6,23 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insert title here</title>
+<link
+	href="<c:url value="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"/>"
+	rel="stylesheet">
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<title>FSC Dokumentacja</title>
 </head>
 <body>
-	<h1>Czy na pewno chcesz usunąć?</h1>
-	<p>${confirmation}</p>
-	<a href="../delete/${confirmation.id}/yes">Tak</a><a href="../">Nie</a>
+	<jsp:include page="../includes/menu.jsp"></jsp:include>
+	<div class="container">
+		<h1>Czy na pewno chcesz usunąć?</h1>
+		<p>${confirmation}</p>
+		<a href="../delete/${confirmation.id}/yes" class="btn btn-info" role="button">Tak</a>
+		<a href="../" class="btn btn-info" role="button">Nie</a>
+		
+	</div>
 </body>
 </html>

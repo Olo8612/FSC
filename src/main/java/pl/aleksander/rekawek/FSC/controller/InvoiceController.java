@@ -65,19 +65,40 @@ public class InvoiceController {
 
 	}
 
+	@RequestMapping(path = "/items/{id}", method = RequestMethod.GET)
+	public String getInvoiceDetails(@PathVariable Long id, HttpSession session, Model model){
+		model.addAttribute("invoice", invoiceRepository.findOne(id));
+		model.addAttribute("invoiceItems", invoiceItemsRepository.findAllInvoiceItemsByInvoiceId(id));
+		return "views/invoiceDetails";
+	}
+	
+	// Probably Temporary to delete have to fix it
+	@RequestMapping(path = "/edit/{id}/item", method = RequestMethod.GET)
+	public String editInvoiceItem(@PathVariable Long id, HttpSession session, Model model) {
+		session.setAttribute("invoice", invoiceRepository.findOne(id));
+		List<InvoiceItem> list = invoiceItemsRepository.findAllInvoiceItemsByInvoiceId(id);
+		model.addAttribute("existingItems", list);
+		return "redirect: /FSC/invoice/add/Item";
+	}
+
 	@RequestMapping(path = "/add/Item", method = RequestMethod.GET)
 	public String addInvoiceItem(Model model, HttpSession session) {
 		Invoice invoice = (Invoice) session.getAttribute("invoice");
-		model.addAttribute("invoice", invoice);
-
-		model.addAttribute("invoiceItem", new InvoiceItem());
-
+		if (model.containsAttribute("existingItems")) {
+			model.addAttribute("invoice", invoice);
+			model.addAttribute("existingItems", invoiceItemsRepository.findAllInvoiceItemsByInvoiceId(invoice.getId()));
+		} else {
+			model.addAttribute("invoice", invoice);
+			model.addAttribute("invoiceItem", new InvoiceItem());
+		}
 		return "forms/addInvoiceItems";
+
 	}
 
 	@RequestMapping(path = "/add/Item", method = RequestMethod.POST)
 	public String processAddInvoiceItem(@Validated @ModelAttribute InvoiceItem invoiceItem, BindingResult result,
 			Model model, HttpSession session) {
+		
 		if (result.hasErrors()) {
 			return "forms/addInvoiceItems";
 		} else {

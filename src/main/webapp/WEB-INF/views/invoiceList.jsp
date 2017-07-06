@@ -14,11 +14,11 @@
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-<title>Insert title here</title>
+<title>FSC Dokumentacja</title>
 </head>
 <body>
 	<jsp:include page="../includes/menu.jsp"></jsp:include>
-	
+
 	<div class="container">
 		<h2>Lista Faktur</h2>
 		<table class="table table-hover">
@@ -33,7 +33,7 @@
 			<tbody>
 				<c:forEach items="${invoices }" var="invoice">
 					<tr>
-						<td>${invoice.invoiceNumber }</td>
+						<td><a href="items/${invoice.id}">${invoice.invoiceNumber }</a></td>
 						<td>${invoice.supplier.name }</td>
 						<td>${invoice.dateOfIssue }</td>
 						<td>${invoice.dateOfPayment }</td>
@@ -46,5 +46,6 @@
 		</table>
 		<a href="add">Dodaj Fakturę</a>
 	</div>
+	
 </body>
 </html>

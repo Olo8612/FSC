@@ -4,10 +4,11 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insert title here</title>
+<title>FSC Dokumentacja</title>
 </head>
 <body>
-<h1>Hello World!</h1>
+<h1>Witam!</h1>
+<p>W przyszłości kiedy aplikacja rozwinie się na tyle żeby móc zostać postawioną globalnie, znajdzie się tu ekran logowania dla użytkownika</p>
 <a href="/FSC/invoice/">Wejście</a>
 </body>
 </html>
