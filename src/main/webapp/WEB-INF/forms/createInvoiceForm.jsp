@@ -30,7 +30,7 @@
 				<form:input path="dateOfIssue" id="di" />
 				<label for="dp">Data płatności:</label>
 				<form:input path="dateOfPayment" id="dp" />
-				<label for="sup">Data płatności:</label>
+				<label for="sup">Nazwa dostawcy:</label>
 				<form:select path="supplier.id" items="${suppliers }"
 					itemLabel="name" itemValue="id" id="sup"></form:select>
 			</div>

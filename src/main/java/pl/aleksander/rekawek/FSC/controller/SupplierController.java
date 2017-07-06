@@ -53,7 +53,7 @@ public class SupplierController {
 	public String processUpdateSupplierForm(@Validated @ModelAttribute Supplier supplier, BindingResult result,
 			Model model) {
 		if (result.hasErrors()) {
-			return "forms/createSupplierForm";
+			return "forms/createSuplierForm";
 		} else {
 			supplierRepository.save(supplier);
 			return "redirect: ../";

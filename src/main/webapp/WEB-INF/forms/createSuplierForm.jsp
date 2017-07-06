@@ -16,24 +16,30 @@
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 </head>
 <body>
-<jsp:include page="../includes/menu.jsp"></jsp:include>
+	<jsp:include page="../includes/menu.jsp"></jsp:include>
 	<div class="container">
 		<form:form method="post" modelAttribute="supplier">
 
 			<div class="form-group">
 				<form:errors path="*" />
 				<label for="name">Nazwa:</label>
-				<form:input path="name" id="name"/><br>
-			</div>
-			<div class="form-group">
+				<form:input path="name" id="name" />
 				<label for="add">Adres:</label>
 				<form:input path="address" id="add" />
-				<label for="nip">Kategoria FSC:</label>
-				<form:input path="fscCategory" id="fsc"/>
-				<label for="verifyDate">Data ostatniej weryfikacji</label>
-				<form:input path="lastVerificationDate" id="verifyDate"/>
+				<br>
 			</div>
-			
+			<div class="form-group">
+				
+				<label for="nip">Kategoria FSC:</label>
+				<form:input path="fscCategory" id="fsc" />
+			</div>
+			<div class="form-group">
+				<label for="verifyDate">Data ostatniej weryfikacji</label>
+				<form:input path="lastVerificationDate" id="verifyDate" />
+				<label for="fsc">Numer Certyfikatu Fsc</label>
+				<form:input path="fscCertificationCode" id="fsc" />
+			</div>
+
 			<input type="submit" class="btn btn-default" value="Dodaj pozycję" />
 		</form:form>
 		<a href="../supplier/">Powrót do listy</a>
