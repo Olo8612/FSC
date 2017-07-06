@@ -10,29 +10,28 @@
 <link
 	href="<c:url value="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"/>"
 	rel="stylesheet">
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <title>Insert title here</title>
 </head>
 <body>
-	<h1>Menu Faktur</h1>
-	<nav> 
-		<a href="add">Dodaj Pozycję Magazynu</a> 
-		<a href="../supplier/">Dostawcy</a>
-		<a href="../customer/">Odbiorcy</a>
-		<a href="../magazine/">Magazyn</a> 
-		<a href="../production/">Produkcja</a> 
-	</nav>
-	<table>
-		<thead>
-			<tr>
-				<td>Numer</td>
+	<jsp:include page="../includes/menu.jsp"></jsp:include>
+	
+	<div class="container">
+		<h2>Lista Faktur</h2>
+		<table class="table table-hover">
+			<thead>
+				<tr>
+					<td>Numer</td>
 				<td>Ilość w cm3</td>
 				<td>Ilość w Gramach</td>
 				<td>Kategoria FSC</td>
-				
-			</tr>
-		</thead>
-		<tbody>
-			<c:forEach items="${magazine }" var="item">
+				</tr>
+			</thead>
+			<tbody>
+				<c:forEach items="${magazine }" var="item">
 				<tr>
 					<td>${item.id }</td>
 					<td>${item.quantityCm3 }</td>
@@ -43,7 +42,10 @@
 					<td><a href="delete/${item.id }">Usuń</a></td>
 				</tr>
 			</c:forEach>
-		</tbody>
-	</table>
+			</tbody>
+		</table>
+		<a href="add">Dodaj pozycję Magazynu </a>
+	</div>
+	
 </body>
 </html>

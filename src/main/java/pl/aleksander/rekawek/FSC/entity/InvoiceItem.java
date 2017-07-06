@@ -42,7 +42,8 @@ public class InvoiceItem {
 	@Column(name="fsc")
 	private Integer fscCategory;
 	
-	@ManyToOne(fetch=FetchType.EAGER, cascade = CascadeType.REMOVE)
+	@ManyToOne(fetch=FetchType.EAGER)
+//	@JoinColumn(name="invoice.id")
 	private Invoice invoice;
 	
 	@NotNull

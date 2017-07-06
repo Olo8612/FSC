@@ -7,16 +7,38 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
+<link
+	href="<c:url value="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"/>"
+	rel="stylesheet">
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 </head>
 <body>
-	<form:form method="post" modelAttribute="customer">
-	<form:errors path="*"/><br>
-	Nazwa: <form:input path="name"/><br>
-	Adres: <form:input path="address"/><br>
-	Nip: <form:input path="taxIdentificationNumber"/><br>
-	Dodatkowe informacje: <form:input path="additionalInformation"/><br>
-	<input type="submit"/>
-	</form:form>
-	<a href="../customer/">Powrót do listy</a>
+	<jsp:include page="../includes/menu.jsp"></jsp:include>
+	<div class="container">
+		<form:form method="post" modelAttribute="customer">
+
+			<div class="form-group">
+				<form:errors path="*" />
+				<label for="name">Nazwa:</label>
+				<form:input path="name" id="name" />
+			</div>
+			<div class="form-group">
+				<label for="add">Adres:</label>
+				<form:input path="address" id="add" />
+				<label for="nip">NIP:</label>
+				<form:input path="taxIdentificationNumber" id="nip" />
+			</div>
+			<div class="form-group">
+				<label for="info">Dodatkowe informacje:</label>
+				<form:input path="additionalInformation" id="info" />
+			</div>
+			<input type="submit" class="btn btn-default" value="Dodaj pozycję" />
+		</form:form>
+		<a href="../customer/">Powrót do listy</a>
+	</div>
+
 </body>
 </html>

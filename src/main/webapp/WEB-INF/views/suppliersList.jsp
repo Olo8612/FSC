@@ -10,28 +10,29 @@
 <link
 	href="<c:url value="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"/>"
 	rel="stylesheet">
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <title>Insert title here</title>
 </head>
 <body>
-	<h1>Menu Dostawców</h1>
-	<nav> 
-		<a href="add">Dodaj dostawcę</a> 
-		<a href="../invoice/">Faktury</a> 
-		<a href="../magazine/">Magazyn</a> 
-		<a href="../production/">Produkcja</a> 
-	</nav>
-	<table>
-		<thead>
-			<tr>
-				<td>Nazwa</td>
-				<td>Adres</td>
-				<td>Kategoria FSC</td>
-				<td>Kod Certyfikatu FSC</td>
-				<td>Data Ostatniej Weryfikacji</td>
-			</tr>
-		</thead>
-		<tbody>
-			<c:forEach items="${suppliers }" var="supplier">
+	<jsp:include page="../includes/menu.jsp"></jsp:include>
+
+	<div class="container">
+		<h2>Lista Dostawców</h2>
+		<table class="table table-hover">
+			<thead>
+				<tr>
+					<td>Nazwa</td>
+					<td>Adres</td>
+					<td>Kategoria FSC</td>
+					<td>Kod Certyfikatu FSC</td>
+					<td>Data Ostatniej Weryfikacji</td>
+				</tr>
+			</thead>
+			<tbody>
+				<c:forEach items="${suppliers }" var="supplier">
 				<tr>
 					<td>${supplier.name }</td>
 					<td>${supplier.address }</td>
@@ -42,7 +43,9 @@
 					<td><a href="delete/${supplier.id }">Usuń</a></td>
 				</tr>
 			</c:forEach>
-		</tbody>
-	</table>
+			</tbody>
+		</table>
+		<a href="add">Dodaj Dostawcę</a>
+	</div>
 </body>
 </html>

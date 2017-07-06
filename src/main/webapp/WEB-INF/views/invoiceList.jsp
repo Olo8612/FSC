@@ -10,40 +10,41 @@
 <link
 	href="<c:url value="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"/>"
 	rel="stylesheet">
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <title>Insert title here</title>
 </head>
 <body>
-	<h1>Menu Faktur</h1>
-	<nav> 
-		<a href="add">Dodaj Fakturę</a> 
-		<a href="../supplier/">Dostawcy</a>
-		<a href="../customer/">Odbiorcy</a>
-		<a href="../magazine/">Magazyn</a> 
-		<a href="../production/">Produkcja</a> 
-	</nav>
-	<table>
-		<thead>
-			<tr>
-				<td>Numer</td>
-				<td>Dostawca</td>
-				<td>Data wystawienia</td>
-				<td>Płatność do</td>
-				
-			</tr>
-		</thead>
-		<tbody>
-			<c:forEach items="${invoices }" var="invoice">
+	<jsp:include page="../includes/menu.jsp"></jsp:include>
+	
+	<div class="container">
+		<h2>Lista Faktur</h2>
+		<table class="table table-hover">
+			<thead>
 				<tr>
-					<td>${invoice.invoiceNumber }</td>
-					<td>${invoice.supplier.name }</td>
-					<td>${invoice.dateOfIssue }</td>
-					<td>${invoice.dateOfPayment }</td>
-				
-					<td><a href="edit/${invoice.id}">Edytuj</a></td>
-					<td><a href="delete/${invoice.id }">Usuń</a></td>
+					<td>Numer</td>
+					<td>Dostawca</td>
+					<td>Data wystawienia</td>
+					<td>Płatność do</td>
 				</tr>
-			</c:forEach>
-		</tbody>
-	</table>
+			</thead>
+			<tbody>
+				<c:forEach items="${invoices }" var="invoice">
+					<tr>
+						<td>${invoice.invoiceNumber }</td>
+						<td>${invoice.supplier.name }</td>
+						<td>${invoice.dateOfIssue }</td>
+						<td>${invoice.dateOfPayment }</td>
+
+						<td><a href="edit/${invoice.id}">Edytuj</a></td>
+						<td><a href="delete/${invoice.id }">Usuń</a></td>
+					</tr>
+				</c:forEach>
+			</tbody>
+		</table>
+		<a href="add">Dodaj Fakturę</a>
+	</div>
 </body>
 </html>

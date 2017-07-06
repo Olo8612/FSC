@@ -10,38 +10,39 @@
 <link
 	href="<c:url value="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"/>"
 	rel="stylesheet">
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <title>Insert title here</title>
 </head>
 <body>
-	<h1>Menu Odbiorców</h1>
-	<nav> 
-		<a href="add">Dodaj odbiorcę</a>
-		<a href="../supplier/">Dostawcy</a> 
-		<a href="../invoice/">Faktury</a> 
-		<a href="../magazine/">Magazyn</a> 
-		<a href="../production/">Produkcja</a> 
-	</nav>
-	<table>
-		<thead>
-			<tr>
-				<td>Nazwa</td>
-				<td>Adres</td>
-				<td>Numer Nip</td>
-				<td>Dodatkowe informacje</td>
-			</tr>
-		</thead>
-		<tbody>
-			<c:forEach items="${customers }" var="customer">
+	<jsp:include page="../includes/menu.jsp"></jsp:include>
+	<div class="container">
+		<h2>Lista Odbiorców</h2>
+		<table class="table table-hover">
+			<thead>
 				<tr>
-					<td>${customer.name }</td>
-					<td>${customer.address }</td>
-					<td>${customer.taxIdentificationNumber }</td>
-					<td>${customer.additionalInformation }</td>
-					<td><a href="edit/${customer.id}">Edytuj</a></td>
-					<td><a href="delete/${customer.id }">Usuń</a></td>
+					<td>Nazwa</td>
+					<td>Adres</td>
+					<td>Numer Nip</td>
+					<td>Dodatkowe informacje</td>
 				</tr>
-			</c:forEach>
-		</tbody>
-	</table>
+			</thead>
+			<tbody>
+				<c:forEach items="${customers }" var="customer">
+					<tr>
+						<td>${customer.name }</td>
+						<td>${customer.address }</td>
+						<td>${customer.taxIdentificationNumber }</td>
+						<td>${customer.additionalInformation }</td>
+						<td><a href="edit/${customer.id}">Edytuj</a></td>
+						<td><a href="delete/${customer.id }">Usuń</a></td>
+					</tr>
+				</c:forEach>
+			</tbody>
+		</table>
+		<a href="add">Dodaj Odbiorcę</a>
+	</div>
 </body>
 </html>

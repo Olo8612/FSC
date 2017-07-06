@@ -7,22 +7,37 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
+<link
+	href="<c:url value="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"/>"
+	rel="stylesheet">
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 </head>
 <body>
-	<form:form method="post" modelAttribute="invoice">
-		<form:errors path="*" />
-		<br>
-	Numer Faktury: <form:input path="invoiceNumber" />
-		<br>
-	Data wystawienia: <form:input path="dateOfIssue" />
-		<br>
-	Data płatności: <form:input path="dateOfPayment" />
-		<br>
-	Dostawca: <form:select path="supplier.id" items="${suppliers }"
-			itemLabel="name" itemValue="id"></form:select>
-		<br>
-		<input type="submit" />
-	</form:form>
-	<a href="../">Powrót do listy</a>
+<jsp:include page="../includes/menu.jsp"></jsp:include>
+	<div class="container">
+		<form:form method="post" modelAttribute="invoice">
+
+			<div class="form-group">
+				<form:errors path="*" />
+				<label for="number">Numer Faktury:</label>
+				<form:input path="invoiceNumber" id="number" />
+			</div>
+			<div class="form-group">
+				<label for="di">Data wystawienia:</label>
+				<form:input path="dateOfIssue" id="di" />
+				<label for="dp">Data płatności:</label>
+				<form:input path="dateOfPayment" id="dp" />
+				<label for="sup">Data płatności:</label>
+				<form:select path="supplier.id" items="${suppliers }"
+					itemLabel="name" itemValue="id" id="sup"></form:select>
+			</div>
+			<input type="submit" class="btn btn-default" value="Dodaj pozycję" />
+		</form:form>
+
+		<a href="../invoice/">Powrót do listy</a>
+	</div>
 </body>
 </html>

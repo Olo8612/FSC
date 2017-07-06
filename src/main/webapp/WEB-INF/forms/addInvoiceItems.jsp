@@ -10,7 +10,7 @@
 </head>
 <body>
 
-
+	<p>${invoice.id}</p>
 	<p>${invoice.invoiceNumber }</p>
 	<p>${invoice.dateOfIssue}</p>
 	<p>${invoice.supplier.name }</p>
