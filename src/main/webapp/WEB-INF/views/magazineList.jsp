@@ -15,7 +15,7 @@
 <body>
 	<h1>Menu Faktur</h1>
 	<nav> 
-		<a href="add">Dodaj Fakturę</a> 
+		<a href="add">Dodaj Pozycję Magazynu</a> 
 		<a href="../supplier/">Dostawcy</a>
 		<a href="../customer/">Odbiorcy</a>
 		<a href="../magazine/">Magazyn</a> 
@@ -25,22 +25,22 @@
 		<thead>
 			<tr>
 				<td>Numer</td>
-				<td>Dostawca</td>
-				<td>Data wystawienia</td>
-				<td>Płatność do</td>
+				<td>Ilość w cm3</td>
+				<td>Ilość w Gramach</td>
+				<td>Kategoria FSC</td>
 				
 			</tr>
 		</thead>
 		<tbody>
-			<c:forEach items="${invoices }" var="invoice">
+			<c:forEach items="${magazine }" var="item">
 				<tr>
-					<td>${invoice.invoiceNumber }</td>
-					<td>${invoice.supplier.name }</td>
-					<td>${invoice.dateOfIssue }</td>
-					<td>${invoice.dateOfPayment }</td>
+					<td>${item.id }</td>
+					<td>${item.quantityCm3 }</td>
+					<td>${item.quantityGrams }</td>
+					<td>${item.fscCategory }</td>
 				
-					<td><a href="edit/${invoice.id}">Edytuj</a></td>
-					<td><a href="delete/${invoice.id }">Usuń</a></td>
+					<td><a href="edit/${item.id}">Edytuj</a></td>
+					<td><a href="delete/${item.id }">Usuń</a></td>
 				</tr>
 			</c:forEach>
 		</tbody>

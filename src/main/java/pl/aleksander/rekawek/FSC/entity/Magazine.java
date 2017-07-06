@@ -2,6 +2,7 @@ package pl.aleksander.rekawek.FSC.entity;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -20,21 +21,18 @@ public class Magazine {
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Long id;
 	
-	@NotNull
 	@Column(name="quantWeight")
 	private Long quantityGrams;
 	
-	@NotNull
 	@Column(name="quantCapacity")
 	private Long quantityCm3;
 	
-	@NotNull
 	@Column(name="fsc")
 	private Integer fscCategory;
 	
-	@OneToOne
-	private Invoice invoiceNumber;
-
+	@OneToOne(fetch=FetchType.EAGER)
+	private Invoice invoice;
+	
 	public Magazine() {
 		
 	}
@@ -71,12 +69,12 @@ public class Magazine {
 		this.fscCategory = fscCategory;
 	}
 
-	public Invoice getInvoiceNumber() {
-		return invoiceNumber;
+	public Invoice getInvoice() {
+		return invoice;
 	}
 
-	public void setInvoiceNumber(Invoice invoiceNumber) {
-		this.invoiceNumber = invoiceNumber;
+	public void setInvoice(Invoice invoice) {
+		this.invoice = invoice;
 	}
 	
 	
