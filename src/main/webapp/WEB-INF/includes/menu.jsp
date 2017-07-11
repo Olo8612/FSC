@@ -19,10 +19,10 @@
       <a class="navbar-brand" href="../invoice/">FSC Dokumentacja</a>
     </div>
     <ul class="nav navbar-nav">
-      <li><a href="../supplier/">Dostawcy</a></li>
-      <li><a href="../invoice/">Faktury</a></li>
-      <li><a href="../customer/">Odbiorcy</a></li>
-      <li><a href="../magazine/">Magazyn</a> </li>
+      <li><a href="/FSC/supplier/">Dostawcy</a></li>
+      <li><a href="/FSC/invoice/">Faktury</a></li>
+      <li><a href="/FSC/customer/">Odbiorcy</a></li>
+      <li><a href="/FSC/magazine/">Magazyn</a> </li>
     </ul>
   </div>
 </nav>

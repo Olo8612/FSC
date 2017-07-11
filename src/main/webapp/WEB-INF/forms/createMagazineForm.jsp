@@ -31,11 +31,16 @@
 				<label for="fsc">Kategoria FSC:</label>
 				<form:input path="fscCategory" id="fsc" />
 			</div>
+			<label>Typ Drewna: <select name="solidType">
+					<option value="plainWood">Tarcica</option>
+					<option value="treePiece">Gałęzie</option>
+			</select>
+			</label>
 			<input type="submit" class="btn btn-default" value="Dodaj pozycję" />
 		</form:form>
 
-		<a href="../magazine/">Powrót do listy</a>
+		<a href="/FSC/magazine/">Powrót do listy</a>
 	</div>
-	
+
 </body>
 </html>

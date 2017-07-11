@@ -13,4 +13,6 @@ public interface InvoiceItemRepository extends JpaRepository<InvoiceItem, Long> 
 	@Query(value = "SELECT * FROM invoiceItems WHERE description LIKE '%tarcica%' and woodType LIKE '%sosna%' and invoice_id = ?1", nativeQuery = true)
 	public List<InvoiceItem> findInvoiceItemPlainWood(Long id);
 
+	@Query(value = "SELECT * FROM invoiceItems WHERE description LIKE '%gałęzie%' and woodType Like '%sosna%' and invoice_id = ?1", nativeQuery = true)
+	public List<InvoiceItem> findInvoiceItemTreePiece(Long id);
 }

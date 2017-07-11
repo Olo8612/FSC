@@ -47,22 +47,34 @@ public class MagazineController {
 
 	@RequestMapping(path = "/add", method = RequestMethod.POST)
 	public String processCreateMagazineForm(@Validated @ModelAttribute Magazine magazine, BindingResult result,
-			Model model) {
+			Model model, @RequestParam String solidType) {
 		if (result.hasErrors()) {
 			return "forms/createMagazineForm";
 		} else {
-			List<InvoiceItem> invoice = invoiceItemRepository.findInvoiceItemPlainWood(magazine.getInvoice().getId());
 			Long quantCm = 0L;
 			Long quantGrams = 0L;
-			for (InvoiceItem invoiceItem : invoice) {
-				quantCm += invoiceItem.getQuantityCm3();
-				quantGrams += invoiceItem.getQuantityGrams();
+			if (solidType.equals("treePiece")) {
+				List<InvoiceItem> invoice = invoiceItemRepository
+						.findInvoiceItemTreePiece(magazine.getInvoice().getId());
+				for (InvoiceItem invoiceItem : invoice) {
+					quantCm += invoiceItem.getQuantityCm3();
+					quantGrams += invoiceItem.getQuantityGrams();
+				}
+			} else if (solidType.equals("plainWood")) {
+				List<InvoiceItem> invoice = invoiceItemRepository
+						.findInvoiceItemPlainWood(magazine.getInvoice().getId());
+				for (InvoiceItem invoiceItem : invoice) {
+					quantCm += invoiceItem.getQuantityCm3();
+					quantGrams += invoiceItem.getQuantityGrams();
+				}
 			}
 			magazine.setQuantityCm3(quantCm);
 			magazine.setQuantityGrams(quantGrams);
 			magazineRepository.save(magazine);
 			return "redirect: ./";
+
 		}
+
 	}
 
 	@RequestMapping(path = "/", method = RequestMethod.GET)
