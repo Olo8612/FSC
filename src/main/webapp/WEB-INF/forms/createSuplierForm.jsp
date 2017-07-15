@@ -26,12 +26,16 @@
 				<form:input path="name" id="name" />
 				<label for="add">Adres:</label>
 				<form:input path="address" id="add" />
+				<label for="taxId">Numer NIP</label>
+				<form:input path="taxIdentificationNumber" id="taxId"/>
 				<br>
 			</div>
 			<div class="form-group">
-				
-				<label for="nip">Kategoria FSC:</label>
+				<label for="fsc">Kategoria FSC:</label>
 				<form:input path="fscCategory" id="fsc" />
+				
+				<label for="info">Dodatkowe informacje</label>
+				<form:input path="additionalInformations" id="info"/>
 			</div>
 			<div class="form-group">
 				<label for="verifyDate">Data ostatniej weryfikacji</label>

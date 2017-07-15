@@ -26,9 +26,11 @@
 				<tr>
 					<td>Nazwa</td>
 					<td>Adres</td>
+					<td>NIP</td>
 					<td>Kategoria FSC</td>
 					<td>Kod Certyfikatu FSC</td>
 					<td>Data Ostatniej Weryfikacji</td>
+					<td>Dodatkowe informacje</td>
 				</tr>
 			</thead>
 			<tbody>
@@ -36,9 +38,11 @@
 				<tr>
 					<td>${supplier.name }</td>
 					<td>${supplier.address }</td>
+					<td>${supplier.taxIdentificationNumber }</td>
 					<td>${supplier.fscCategory }</td>
 					<td>${supplier.fscCertificationCode }</td>
 					<td>${supplier.lastVerificationDate }</td>
+					<td>${supplier.additionalInformations }</td>
 					<td><a href="edit/${supplier.id}">Edytuj</a></td>
 					<td><a href="delete/${supplier.id }">Usuń</a></td>
 				</tr>

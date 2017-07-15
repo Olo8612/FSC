@@ -13,6 +13,7 @@ import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
 
 import org.hibernate.validator.constraints.NotBlank;
+import org.hibernate.validator.constraints.pl.NIP;
 import org.springframework.format.annotation.DateTimeFormat;
 
 @Entity
@@ -37,11 +38,18 @@ public class Supplier {
 	@NotBlank
 	@Column(name = "certCode")
 	private String fscCertificationCode;
+	
+	@NIP
+	@Column(name = "taxIndentity")
+	private String taxIdentificationNumber;
 
 	@NotNull
 	@DateTimeFormat(pattern = "dd/MM/yyyy")
 	@Column(name = "verifyDate")
 	private Date lastVerificationDate;
+	
+	@Column(name = "info")
+	private String additionalInformations;
 
 	public Supplier() {
 
@@ -93,6 +101,22 @@ public class Supplier {
 
 	public void setLastVerificationDate(Date lastVerificationDate) {
 		this.lastVerificationDate = lastVerificationDate;
+	}
+
+	public String getTaxIdentificationNumber() {
+		return taxIdentificationNumber;
+	}
+
+	public void setTaxIdentificationNumber(String taxIdentificationNumber) {
+		this.taxIdentificationNumber = taxIdentificationNumber;
+	}
+
+	public String getAdditionalInformations() {
+		return additionalInformations;
+	}
+
+	public void setAdditionalInformations(String additionalInformations) {
+		this.additionalInformations = additionalInformations;
 	}
 
 }
