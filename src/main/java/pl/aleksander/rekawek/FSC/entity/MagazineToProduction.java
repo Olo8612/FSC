@@ -8,6 +8,10 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 
+/*
+ * Use this entity to represent whole magazine to year raport
+ */
+
 @Entity
 @Table(name = "magazineProduction")
 public class MagazineToProduction {
