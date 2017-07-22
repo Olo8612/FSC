@@ -49,7 +49,8 @@
 						<form:errors path="*" />
 
 						<td><form:input path="description" /></td>
-						<td><form:input path="woodType" /></td>
+						<td><form:select path="woodType" items="${woodType }"
+					itemLabel="name" itemValue="id"></form:select></td>
 						<td><form:input path="quantityCm3" /></td>
 						<td><form:input path="quantityGrams" /></td>
 						<td><form:input path="fscCategory" /></td>

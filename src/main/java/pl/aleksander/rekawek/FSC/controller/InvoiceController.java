@@ -17,9 +17,11 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import pl.aleksander.rekawek.FSC.entity.Invoice;
 import pl.aleksander.rekawek.FSC.entity.InvoiceItem;
 import pl.aleksander.rekawek.FSC.entity.Supplier;
+import pl.aleksander.rekawek.FSC.entity.WoodType;
 import pl.aleksander.rekawek.FSC.repository.InvoiceItemRepository;
 import pl.aleksander.rekawek.FSC.repository.InvoiceRepository;
 import pl.aleksander.rekawek.FSC.repository.SupplierRepository;
+import pl.aleksander.rekawek.FSC.repository.WoodTypeRepository;
 
 @Controller
 @RequestMapping(path = "/invoice")
@@ -32,6 +34,14 @@ public class InvoiceController {
 	@Autowired
 	private InvoiceItemRepository invoiceItemsRepository;
 
+	@Autowired
+	private WoodTypeRepository woodTypeRepository;
+	
+	@ModelAttribute(name = "woodType")
+	public List<WoodType> getWoodTypes() {
+		return woodTypeRepository.findAll();
+	}
+	
 	@ModelAttribute(name = "suppliers")
 	public List<Supplier> getSuppliers() {
 		return supplierRepository.findAll();
