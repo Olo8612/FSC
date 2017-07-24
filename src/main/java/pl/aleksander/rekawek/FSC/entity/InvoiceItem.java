@@ -25,7 +25,7 @@ public class InvoiceItem {
 	@NotBlank
 	private String description;
 
-	@NotBlank
+	@NotNull
 	@ManyToOne(fetch = FetchType.EAGER)
 	private WoodType woodType;
 

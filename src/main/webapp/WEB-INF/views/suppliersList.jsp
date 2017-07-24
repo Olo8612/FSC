@@ -2,6 +2,7 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -41,7 +42,7 @@
 					<td>${supplier.taxIdentificationNumber }</td>
 					<td>${supplier.fscCategory }</td>
 					<td>${supplier.fscCertificationCode }</td>
-					<td>${supplier.lastVerificationDate }</td>
+					<td><fmt:formatDate value="${supplier.lastVerificationDate }" pattern="yyyy-MM-dd"/></td>
 					<td>${supplier.additionalInformations }</td>
 					<td><a href="edit/${supplier.id}">Edytuj</a></td>
 					<td><a href="delete/${supplier.id }">Usuń</a></td>

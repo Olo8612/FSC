@@ -38,8 +38,8 @@
 						<td>${type.efficiencyKnots }</td>
 						<td>${type.efficiencyBoats }</td>
 
-						<td><a href="edit/${woodType.id}">Edytuj</a></td>
-						<td><a href="delete/${woodType.id }">Usuń</a></td>
+						<td><a href="edit/${type.id}">Edytuj</a></td>
+						<td><a href="delete/${type.id }">Usuń</a></td>
 					</tr>
 				</c:forEach>
 			</tbody>

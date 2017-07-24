@@ -2,6 +2,7 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -35,8 +36,8 @@
 					<tr>
 						<td><a href="items/${invoice.id}">${invoice.invoiceNumber }</a></td>
 						<td>${invoice.supplier.name }</td>
-						<td>${invoice.dateOfIssue }</td>
-						<td>${invoice.dateOfPayment }</td>
+						<td><fmt:formatDate value="${invoice.dateOfIssue }" pattern="yyyy-MM-dd"/></td>
+						<td><fmt:formatDate value="${invoice.dateOfPayment }" pattern="yyyy-MM-dd"/></td>
 
 						<td><a href="edit/${invoice.id}">Edytuj</a></td>
 						<td><a href="delete/${invoice.id }">Usuń</a></td>

@@ -17,7 +17,7 @@ public class InvoiceItemsFromFormProcess {
 
 		item.setFscCategory((Integer) request.getAttribute("invoiceFscCAt"));
 
-		item.setWoodType((String) request.getParameter("invoiceWoodType"));
+//		item.setWoodType((String) request.getParameter("invoiceWoodType"));
 
 		item.setQuantityCm3(((Long) request.getAttribute("invoiceQuantityCm3")) * 100);
 

@@ -2,6 +2,7 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -23,6 +24,7 @@
       <li><a href="/FSC/invoice/">Faktury</a></li>
       <li><a href="/FSC/customer/">Odbiorcy</a></li>
       <li><a href="/FSC/magazine/">Magazyn</a> </li>
+      <li><a href="/FSC/woodType/">Gatunki Drewna</a></li>
     </ul>
   </div>
 </nav>

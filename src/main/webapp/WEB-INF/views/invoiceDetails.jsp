@@ -2,6 +2,7 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -21,7 +22,8 @@
 	
 	<div class="container">
 		<h2>Faktura nr: ${invoice.invoiceNumber }</h2>
-		<h2>Data wystawienia: ${invoice.dateOfIssue}</h2>
+		<h2>Data wystawienia: <fmt:formatDate value="${invoice.dateOfIssue}" pattern="yyyy-MM-dd"/></h2>
+		<h2>Płatność do: <fmt:formatDate value="${invoice.dateOfPayment}" pattern="yyyy-MM-dd"/></h2>
 		<h2>Nazwa dostawcy: ${invoice.supplier.name }</h2>
 		<table class="table table-hover">
 			<thead>
@@ -38,7 +40,7 @@
 				<c:forEach items="${invoiceItems }" var="items">
 					<tr>
 						<td>${items.description}</td>
-						<td>${items.woodType}</td>
+						<td>${items.woodType.name}</td>
 						<td>${items.quantityCm3}</td>
 						<td>${items.quantityGrams}</td>
 						<td>${items.fscCategory}</td>

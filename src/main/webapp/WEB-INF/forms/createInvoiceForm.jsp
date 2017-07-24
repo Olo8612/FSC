@@ -27,7 +27,7 @@
 			</div>
 			<div class="form-group">
 				<label for="di">Data wystawienia:</label>
-				<form:input path="dateOfIssue" id="di" />
+				<form:input path="dateOfIssue" id="di"/>
 				<label for="dp">Data płatności:</label>
 				<form:input path="dateOfPayment" id="dp" />
 				<label for="sup">Nazwa dostawcy:</label>

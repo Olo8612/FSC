@@ -37,7 +37,7 @@
 				<c:forEach items="${existingItems }" var="items">
 					<tr>
 						<td>${items.description}</td>
-						<td>${items.woodType}</td>
+						<td>${items.woodType.name}</td>
 						<td>${items.quantityCm3}</td>
 						<td>${items.quantityGrams}</td>
 						<td>${items.fscCategory}</td>
@@ -49,7 +49,7 @@
 						<form:errors path="*" />
 
 						<td><form:input path="description" /></td>
-						<td><form:select path="woodType" items="${woodType }"
+						<td><form:select path="woodType.id" items="${woodType }"
 					itemLabel="name" itemValue="id"></form:select></td>
 						<td><form:input path="quantityCm3" /></td>
 						<td><form:input path="quantityGrams" /></td>
