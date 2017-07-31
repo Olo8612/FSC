@@ -37,7 +37,7 @@
 			<input type="submit" class="btn btn-default" value="Dodaj pozycję" />
 		</form:form>
 
-		<a href="../invoice/">Powrót do listy</a>
+		<a href="../">Powrót do listy</a>
 	</div>
 </body>
 </html>

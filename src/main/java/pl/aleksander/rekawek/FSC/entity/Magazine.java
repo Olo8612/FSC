@@ -6,6 +6,7 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
@@ -13,27 +14,38 @@ import javax.persistence.Table;
  * Entity for actual status of magazine
  */
 @Entity
-@Table(name="magazine")
+@Table(name = "magazine")
 public class Magazine {
-	
+
 	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-	
-	@Column(name="quantWeight")
+
+	@Column(name = "quantWeight")
 	private Long quantityGrams;
-	
-	@Column(name="quantCapacity")
+
+	@Column(name = "quantCapacity")
 	private Long quantityCm3;
-	
-	@Column(name="fsc")
+
+	@Column(name = "fsc")
 	private Integer fscCategory;
-	
-	@OneToOne(fetch=FetchType.EAGER)
+
+	@OneToOne(fetch = FetchType.EAGER)
 	private Invoice invoice;
-	
+
+	@ManyToOne(fetch = FetchType.EAGER)
+	private WoodType woodType;
+
 	public Magazine() {
-		
+
+	}
+
+	public WoodType getWoodType() {
+		return woodType;
+	}
+
+	public void setWoodType(WoodType woodType) {
+		this.woodType = woodType;
 	}
 
 	public Long getId() {
@@ -75,6 +87,5 @@ public class Magazine {
 	public void setInvoice(Invoice invoice) {
 		this.invoice = invoice;
 	}
-	
-	
+
 }

@@ -36,6 +36,8 @@
 					<option value="treePiece">Gałęzie</option>
 			</select>
 			</label>
+			<form:select path="woodType.id" items="${woodTypes }"
+					itemLabel="name" itemValue="id" id="invoice"></form:select>
 			<input type="submit" class="btn btn-default" value="Dodaj pozycję" />
 		</form:form>
 

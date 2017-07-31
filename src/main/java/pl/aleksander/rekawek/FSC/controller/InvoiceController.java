@@ -82,7 +82,7 @@ public class InvoiceController {
 		return "views/invoiceDetails";
 	}
 	
-	// Probably Temporary to delete have to fix it
+	
 	@RequestMapping(path = "/edit/{id}/item", method = RequestMethod.GET)
 	public String editInvoiceItem(@PathVariable Long id, HttpSession session, Model model) {
 		session.setAttribute("invoice", invoiceRepository.findOne(id));

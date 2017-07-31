@@ -17,9 +17,11 @@ import org.springframework.web.bind.annotation.RequestParam;
 import pl.aleksander.rekawek.FSC.entity.Invoice;
 import pl.aleksander.rekawek.FSC.entity.InvoiceItem;
 import pl.aleksander.rekawek.FSC.entity.Magazine;
+import pl.aleksander.rekawek.FSC.entity.WoodType;
 import pl.aleksander.rekawek.FSC.repository.InvoiceItemRepository;
 import pl.aleksander.rekawek.FSC.repository.InvoiceRepository;
 import pl.aleksander.rekawek.FSC.repository.MagazineRepository;
+import pl.aleksander.rekawek.FSC.repository.WoodTypeRepository;
 
 @Controller
 @RequestMapping(path = "/magazine")
@@ -33,10 +35,18 @@ public class MagazineController {
 
 	@Autowired
 	private InvoiceRepository invoiceRepository;
+	
+	@Autowired
+	private WoodTypeRepository woodTypeRepository;
 
 	@ModelAttribute(name = "invoices")
 	public List<Invoice> getAllInvoices() {
 		return invoiceRepository.findAll();
+	}
+	
+	@ModelAttribute(name = "woodTypes")
+	public List<WoodType> getAllWoodType() {
+		return woodTypeRepository.findAll();
 	}
 
 	@RequestMapping(path = "/add", method = RequestMethod.GET)
@@ -55,14 +65,14 @@ public class MagazineController {
 			Long quantGrams = 0L;
 			if (solidType.equals("treePiece")) {
 				List<InvoiceItem> invoice = invoiceItemRepository
-						.findInvoiceItemTreePiece(magazine.getInvoice().getId());
+						.findInvoiceItemTreePiece(magazine.getInvoice().getId(), magazine.getWoodType().getId());
 				for (InvoiceItem invoiceItem : invoice) {
 					quantCm += invoiceItem.getQuantityCm3();
 					quantGrams += invoiceItem.getQuantityGrams();
 				}
 			} else if (solidType.equals("plainWood")) {
 				List<InvoiceItem> invoice = invoiceItemRepository
-						.findInvoiceItemPlainWood(magazine.getInvoice().getId());
+						.findInvoiceItemPlainWood(magazine.getInvoice().getId(), magazine.getWoodType().getId());
 				for (InvoiceItem invoiceItem : invoice) {
 					quantCm += invoiceItem.getQuantityCm3();
 					quantGrams += invoiceItem.getQuantityGrams();
