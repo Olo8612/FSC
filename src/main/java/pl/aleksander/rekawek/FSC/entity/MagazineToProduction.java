@@ -5,6 +5,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 
@@ -20,11 +21,14 @@ public class MagazineToProduction {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 
-	@NotNull
+	@ManyToOne
+	private Magazine magazine;
+	
+	
 	@Column(name = "quantCapacity")
 	private Long quantityCm3;
 
-	@NotNull
+	
 	@Column(name = "quantWeight")
 	private Long quantityGrams;
 
@@ -34,6 +38,14 @@ public class MagazineToProduction {
 
 	public MagazineToProduction() {
 
+	}
+
+	public Magazine getMagazine() {
+		return magazine;
+	}
+
+	public void setMagazine(Magazine magazine) {
+		this.magazine = magazine;
 	}
 
 	public Long getId() {
