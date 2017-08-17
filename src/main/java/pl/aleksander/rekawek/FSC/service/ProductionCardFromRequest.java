@@ -9,7 +9,8 @@ import pl.aleksander.rekawek.FSC.entity.MagazineToProduction;
 import pl.aleksander.rekawek.FSC.entity.ProductionCard;
 
 public class ProductionCardFromRequest {
-
+	
+	private final String TIME_ADD = " 00:00:00";
 	private ProductionCard card;
 	private Magazine magazine;
 	private MagazineToProduction mProduction;
@@ -18,29 +19,23 @@ public class ProductionCardFromRequest {
 		this.magazine = magazine;
 	}
 
-	public Exception createProductionCardFromRequestParams(HttpServletRequest request) {
+	public void createProductionCardFromRequestParams(HttpServletRequest request)
+			throws NumberFormatException, IllegalArgumentException {
 		this.card = new ProductionCard();
 		// MagazineToProductionGetWoodFromMagazine mp = new
 		// MagazineToProductionGetWoodFromMagazine();
 		Long quantityCm;
 		Long quantityGrams;
-		try {
+		
+		Double tempCm = Double.parseDouble(request.getParameter("ndtrimetrs"))*1000.0;
+		Double tempGrams = Double.parseDouble(request.getParameter("ndkg"))*1000.0;
+		
+		quantityCm = tempCm.longValue();
+		quantityGrams = tempGrams.longValue();
+		this.card.setDate(Timestamp.valueOf(request.getParameter("date")+TIME_ADD));
 
-			quantityCm = Long.parseLong(request.getParameter("ndtrimetrs")) * 1000L;
-			quantityGrams = Long.parseLong(request.getParameter("ndkg")) * 1000L;
-			this.card.setDate(Timestamp.valueOf(request.getParameter("date")));
-
-		} catch (NumberFormatException e) {
-			System.out.println("nie parsuje Stringa");
-			return e;
-		} catch (NullPointerException f) {
-			System.out.println("nie ma daty");
-			return f;
-		}
 		this.mProduction = getWoodFromMagazine(quantityCm, quantityGrams);
 		this.card.setMagazineGetWood(mProduction);
-
-		return null;
 
 	}
 

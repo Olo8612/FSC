@@ -25,6 +25,7 @@
 				<input name="date" id="number" />
 			</div>
 			<div class="form-group">
+				<label>${errors }</label><br>
 				<label for="mag">Pozycja Magazynu:</label>
 				<table class="table table-hover" id="mag">
 					<thead>
