@@ -37,7 +37,7 @@
 			</div>
 			<input type="submit" class="btn btn-default" value="Dodaj pozycję" />
 		</form:form>
-		<a href="../">Powrót do listy</a>
+		<a href="/FSC/customer/">Powrót do listy</a>
 	</div>
 
 </body>

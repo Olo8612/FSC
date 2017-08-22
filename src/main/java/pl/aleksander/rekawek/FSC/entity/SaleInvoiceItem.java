@@ -1,43 +1,50 @@
 package pl.aleksander.rekawek.FSC.entity;
 
+import java.math.BigDecimal;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 
 @Entity
-@Table(name="saleItems")
+@Table(name = "saleItems")
 public class SaleInvoiceItem {
-	
+
 	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-	
+
 	@NotNull
 	private String typeOfWood;
+
 	@NotNull
 	private String productType;
-	
+
 	private Integer dimension;
-	
+
 	@NotNull
-	@Column(name="quantCapacity")
-	private Long quantityCm3;
-	
+	@Column(name = "quantCapacity")
+	private Long quantityPiece;
+
 	@NotNull
-	@Column(name="quantWeight")
+	@Column(name = "quantWeight")
 	private Long quantityGrams;
-	
+
 	@NotNull
-	private Long quantity;
-	@NotNull
-	private Long priceNet;
+	private BigDecimal priceNet;
 	
+	@ManyToOne(fetch = FetchType.EAGER)
+	// @JoinColumn(name="invoice.id")
+	private SaleInvoice saleInvoice;
+
 	public SaleInvoiceItem() {
-		
+
 	}
 
 	public Long getId() {
@@ -72,12 +79,12 @@ public class SaleInvoiceItem {
 		this.dimension = dimension;
 	}
 
-	public Long getQuantityCm3() {
-		return quantityCm3;
+	public Long getQuantityPiece() {
+		return quantityPiece;
 	}
 
-	public void setQuantityCm3(Long quantityCm3) {
-		this.quantityCm3 = quantityCm3;
+	public void setQuantityPiece(Long quantityPiece) {
+		this.quantityPiece = quantityPiece;
 	}
 
 	public Long getQuantityGrams() {
@@ -88,21 +95,12 @@ public class SaleInvoiceItem {
 		this.quantityGrams = quantityGrams;
 	}
 
-	public Long getQuantity() {
-		return quantity;
-	}
-
-	public void setQuantity(Long quantity) {
-		this.quantity = quantity;
-	}
-
-	public Long getPriceNet() {
+	public BigDecimal getPriceNet() {
 		return priceNet;
 	}
 
-	public void setPriceNet(Long priceNet) {
+	public void setPriceNet(BigDecimal priceNet) {
 		this.priceNet = priceNet;
 	}
-	
-	
+
 }

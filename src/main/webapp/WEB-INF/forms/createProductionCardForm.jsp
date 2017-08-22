@@ -59,7 +59,7 @@
 			<input type="submit" class="btn btn-default" value="Dodaj pozycję" />
 		</form>
 
-		<a href="../">Powrót do listy</a>
+		<a href="/FSC/production/">Powrót do listy</a>
 	</div>
 </body>
 </html>

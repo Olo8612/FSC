@@ -1,10 +1,13 @@
 package pl.aleksander.rekawek.FSC.entity;
 
-import java.util.Date;
+import java.math.BigDecimal;
+import java.sql.Timestamp;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -14,36 +17,37 @@ import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 
 @Entity
-@Table(name="saleInvoice")
+@Table(name = "saleInvoice")
 public class SaleInvoice {
-	
+
 	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 
 	@NotNull
-	@Column(name="number")
+	@Column(name = "number")
 	private String invoiceNumber;
-	
+
 	@NotNull
-	private Date dateOfIssue;
-	
+	private Timestamp dateOfIssue;
+
 	@NotNull
-	private Date dateOfPayment;
-	
+	private Timestamp dateOfPayment;
+
 	@NotNull
 	@ManyToOne
 	private Customer customer;
-	
+
 	@NotNull
-	@OneToMany
+	@OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.REMOVE, mappedBy = "saleInvoice")
 	private List<SaleInvoiceItem> items;
-	
+
 	@NotNull
-	private Long invoiceValueNet;
+	@Column(name = "value")
+	private BigDecimal invoiceValueNet;
 
 	public SaleInvoice() {
-		
+
 	}
 
 	public Long getId() {
@@ -62,19 +66,19 @@ public class SaleInvoice {
 		this.invoiceNumber = invoiceNumber;
 	}
 
-	public Date getDateOfIssue() {
+	public Timestamp getDateOfIssue() {
 		return dateOfIssue;
 	}
 
-	public void setDateOfIssue(Date dateOfIssue) {
+	public void setDateOfIssue(Timestamp dateOfIssue) {
 		this.dateOfIssue = dateOfIssue;
 	}
 
-	public Date getDateOfPayment() {
+	public Timestamp getDateOfPayment() {
 		return dateOfPayment;
 	}
 
-	public void setDateOfPayment(Date dateOfPayment) {
+	public void setDateOfPayment(Timestamp dateOfPayment) {
 		this.dateOfPayment = dateOfPayment;
 	}
 
@@ -94,14 +98,12 @@ public class SaleInvoice {
 		this.items = items;
 	}
 
-	public Long getInvoiceValueNet() {
+	public BigDecimal getInvoiceValueNet() {
 		return invoiceValueNet;
 	}
 
-	public void setInvoiceValueNet(Long invoiceValueNet) {
+	public void setInvoiceValueNet(BigDecimal invoiceValueNet) {
 		this.invoiceValueNet = invoiceValueNet;
 	}
-	
-	
-	
+
 }

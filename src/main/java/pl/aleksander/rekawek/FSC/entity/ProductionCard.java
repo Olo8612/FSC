@@ -32,7 +32,7 @@ public class ProductionCard {
 
 	@NotNull
 	@OneToMany
-	private List<FscSale> sale;
+	private List<SaleInvoice> sale;
 
 	public ProductionCard() {
 
@@ -62,11 +62,11 @@ public class ProductionCard {
 		this.magazineGetWood = magazineGetWood;
 	}
 
-	public List<FscSale> getSale() {
+	public List<SaleInvoice> getSale() {
 		return sale;
 	}
 
-	public void setSale(List<FscSale> sale) {
+	public void setSale(List<SaleInvoice> sale) {
 		this.sale = sale;
 	}
 

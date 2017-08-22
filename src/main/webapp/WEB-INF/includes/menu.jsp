@@ -25,6 +25,7 @@
       <li><a href="/FSC/customer/">Odbiorcy</a></li>
       <li><a href="/FSC/magazine/">Magazyn</a> </li>
       <li><a href="/FSC/production/">Produkcja</a></li>
+      <li><a href="/FSC/sale/">Sprzedaż</a>
       <li><a href="/FSC/woodType/">Gatunki Drewna</a></li>
     </ul>
   </div>
