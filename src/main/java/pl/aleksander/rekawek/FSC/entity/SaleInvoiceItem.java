@@ -21,7 +21,8 @@ public class SaleInvoiceItem {
 	private Long id;
 
 	@NotNull
-	private String typeOfWood;
+	@ManyToOne(fetch = FetchType.EAGER)
+	private WoodType woodType;
 
 	@NotNull
 	private String productType;
@@ -37,8 +38,14 @@ public class SaleInvoiceItem {
 	private Long quantityGrams;
 
 	@NotNull
+	@Column(name = "fsc")
+	private Integer fscCategory;
+
+	@NotNull
 	private BigDecimal priceNet;
-	
+
+	private String additionalInformation;
+
 	@ManyToOne(fetch = FetchType.EAGER)
 	// @JoinColumn(name="invoice.id")
 	private SaleInvoice saleInvoice;
@@ -55,12 +62,20 @@ public class SaleInvoiceItem {
 		this.id = id;
 	}
 
-	public String getTypeOfWood() {
-		return typeOfWood;
+	public WoodType getWoodType() {
+		return woodType;
 	}
 
-	public void setTypeOfWood(String typeOfWood) {
-		this.typeOfWood = typeOfWood;
+	public void setWoodType(WoodType woodType) {
+		this.woodType = woodType;
+	}
+
+	public Integer getFscCategory() {
+		return fscCategory;
+	}
+
+	public void setFscCategory(Integer fscCategory) {
+		this.fscCategory = fscCategory;
 	}
 
 	public String getProductType() {
@@ -101,6 +116,22 @@ public class SaleInvoiceItem {
 
 	public void setPriceNet(BigDecimal priceNet) {
 		this.priceNet = priceNet;
+	}
+
+	public String getAdditionalInformation() {
+		return additionalInformation;
+	}
+
+	public void setAdditionalInformation(String additionalInformation) {
+		this.additionalInformation = additionalInformation;
+	}
+
+	public SaleInvoice getSaleInvoice() {
+		return saleInvoice;
+	}
+
+	public void setSaleInvoice(SaleInvoice saleInvoice) {
+		this.saleInvoice = saleInvoice;
 	}
 
 }

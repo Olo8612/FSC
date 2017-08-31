@@ -22,12 +22,11 @@ public class ProductionCardFromRequest {
 	public void createProductionCardFromRequestParams(HttpServletRequest request)
 			throws NumberFormatException, IllegalArgumentException {
 		this.card = new ProductionCard();
-		// MagazineToProductionGetWoodFromMagazine mp = new
-		// MagazineToProductionGetWoodFromMagazine();
+		
 		Long quantityCm;
 		Long quantityGrams;
 		
-		Double tempCm = Double.parseDouble(request.getParameter("ndtrimetrs"))*1000.0;
+		Double tempCm = Double.parseDouble(request.getParameter("ndtrimetrs"))*100.0;
 		Double tempGrams = Double.parseDouble(request.getParameter("ndkg"))*1000.0;
 		
 		quantityCm = tempCm.longValue();
